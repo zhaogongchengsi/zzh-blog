@@ -6,16 +6,15 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
+  title: "伍六七",
   tagline: "Dinosaurs are cool",
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://zzhblog.cn",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
-
+  favicon: "img/logo2.png",
+  // organizationName: "facebook", // Usually your GitHub org/user name.
+  // projectName: "docusaurus", // Usually your repo name.
   presets: [
     [
       "classic",
@@ -39,22 +38,21 @@ const config = {
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "My Site",
+        title: "ZZH-Blog",
         logo: {
           alt: "My Site Logo",
-          src: "img/logo.svg",
+          src: "img/logo1.png",
         },
         items: [
           {
             type: "doc",
             docId: "intro",
-            position: "left",
-            label: "Tutorial",
+            position: "right",
+            label: "文章",
           },
           {
             to: "/blog",
@@ -62,7 +60,7 @@ const config = {
             position: "right",
           },
           {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://github.com/zhaogongchengsi/zzh-blog",
             label: "GitHub",
             position: "right",
           },
