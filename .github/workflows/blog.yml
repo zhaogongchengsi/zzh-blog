@@ -32,6 +32,6 @@ jobs:
         ftp-server: ftp://zzhblog.cn
         ftp-username: ${{secrets.FTP_USER}}
         ftp-password: ${{secrets.FTP_PWD}}
-        local-dir: /usr/local/nginx/html/
+        local-dir: /usr/local/nginx/html
       env:
         CI: trun
