@@ -29,11 +29,13 @@ jobs:
     - run: git status -uno -u
     - run: git stash
     - name: ftp Deploy
-      uses: SamKirkland/FTP-Deploy-Action@3.0.0
+      uses: appledoy/scp-action@master
       with:
-        ftp-server: ftp://zzhblog.cn
-        ftp-username: ${{secrets.FTP_USER}}
-        ftp-password: ${{secrets.FTP_PWD}}
-        local-dir: /usr/local/nginx/html
+        host: ftp://zzhblog.cn
+        username: ${{secrets.FTP_USER}}
+        password: ${{secrets.FTP_PWD}}
+        port: 22
+        source: "build/"
+        target: /usr/local/nginx/html
       env:
         CI: trun
