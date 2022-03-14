@@ -9,21 +9,23 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className="header-banner">
-      <div className={clsx(styles.headerContainer)}>
-        <div className={clsx(styles.headerLeft)}>
-          <h1>{siteConfig.title} <span>的小破站</span> </h1>
-          <h2>{siteConfig.tagline}</h2>
-          <Link
-            className={clsx(styles.homeLink)}
-            to="/docs/intro">
-            快速了解
-          </Link>
+    <header className={styles.headerBanner}>
+      <div className={clsx(styles.desc, "homeDescBackaged")}>
+            <h1>{siteConfig.title} <span>的小破站</span> </h1>
+            <h2>{siteConfig.tagline}</h2>
+            <div className={clsx(styles.homelinks)}>
+              <Link
+                className={clsx(styles.homeLink)}
+                to="/docs/intro">
+                快速了解
+              </Link>
+              <Link
+                className={clsx(styles.homeLink)}
+                to="/docs/paste">
+                快速黏贴
+              </Link>
+            </div>
         </div>
-        <div className={clsx(styles.headerRight)}>
-          <img src="/img/undraw_static_assets_rpm6.svg" className={styles.imgSvg}></img>
-        </div>
-      </div>
     </header>
   );
 }
@@ -32,8 +34,8 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={`${siteConfig.title}-- zzhblog, ZZHBLOG, ZZH_BLOG, zzh的个人博客`}
+      description="zzh 的个人博客">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

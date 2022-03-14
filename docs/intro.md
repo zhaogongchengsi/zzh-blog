@@ -51,7 +51,14 @@ The `npm run start` command builds your website locally and serves it through a 
 Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
 
 ```js live
-function dom() {
-  return "虚拟代码测试";
-}
+(function () {
+  function test() {
+    return "当前测试"
+  }
+  function dom() {
+    console.log("Testing Live 数据")
+    return test()
+  }
+  return dom()
+})()
 ```

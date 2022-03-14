@@ -15,18 +15,10 @@
     padding: 2rem;
   }
 
-  .headerContainer {
-    flex-direction: column;
-    align-items: center;
+  .headerBanner {
+    background-size: 100% 100% !important;
   }
 
-  .headerLeft {
-    width: 100%;
-  }
-
-  .headerRight {
-    width: 100% !important;
-  }
 }
 
 .buttons {
@@ -35,50 +27,34 @@
   justify-content: center;
 }
 
-.headerContainer {
+.headerBanner {
+  padding: 2rem;
   display: flex;
-  /* height: calc(100vh - var(--ifm-navbar-height)); */
+  height: calc(100vh - var(--ifm-navbar-height));
+  min-height: 500px;
   width: 100%;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  /* padding-top: var(--ifm-navbar-height) */
+  background: url(/img/undraw_static_assets_rpm6.svg) no-repeat 90% center / auto 90%;
+}
+
+.desc {
+  width: 70%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  padding: 1rem;
 
 }
 
-.headerLeft {
-  flex: 1;
-  text-align: center;
-  /* height: 100%; */
-  padding: 3rem 1rem;
-}
-
-.headerLeft h1 {
-  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  /* -webkit-text-fill-color: transparent !important; */
-  color: transparent;
-  font-size: 6rem;
-}
-
-.headerLeft h1 span {
-  font-size: 16px;
-  vertical-align: -webkit-baseline-middle;
-}
-.headerLeft h2 {
-  color: #67e0fc;
-  font-size: 2rem;
-}
-
-.headerRight {
-  width: 60%;
-  padding: 2rem;
-}
-
-.imgSvg {
-  width: 100%;
-  height: 100%;
+.homelinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .homeLink {
@@ -87,21 +63,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #17a7d8, #1bc7ff);
-  box-shadow:  10px 10px 21px #17abdd,
-               -10px -10px 21px #1bc9ff;
-  margin: 0 auto;
-  margin-top: 30px;
-  color: #fff;
+
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #16baec;
+  box-shadow: 6px 6px 19px #14a6d2, 0px 0px 19px #18ceff;
+
+  transition: all 0.2s;
+  color: #333;
   font-weight: 600;
+  margin-right:1rem;
 }
 
 .homeLink:hover {
   text-decoration: none;
   border-radius: 20px;
   background: linear-gradient(145deg, #1bc7ff, #17a7d8);
-  box-shadow:  10px 10px 21px #17abdd,
-               -10px -10px 21px #1bc9ff;
-               color: #fff;
+  box-shadow: 0px 0px 0px 0px #17abdd, -1px 0px 21px #1bc9ff;
+  color: #fff;
 }
