@@ -3,6 +3,7 @@
 ## javascript 专区
 
 - [函数节流](javascript#函数节流)
+- [函数防抖](javascript#函数防抖)
 - [深克隆](javascript#深克隆)
 
 ## Scss 专区

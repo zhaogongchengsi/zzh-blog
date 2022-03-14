@@ -2,4 +2,5 @@
 sidebar_position: 1
 ---
 
-# 第一个首页
+# js page
+- [函数防抖-节流](debounce)
