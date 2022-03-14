@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "伍六七",
-  tagline: "Dinosaurs are cool",
+  tagline: "学不动了，就去喂猪！！！",
   url: "https://zzhblog.cn",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -40,10 +40,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [{ name: "keywords", content: "zzhblog" }],
       navbar: {
         title: "ZZH-Blog",
         logo: {
-          alt: "My Site Logo",
+          alt: "伍六七",
           src: "img/logo1.png",
         },
         items: [
@@ -72,25 +73,8 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "最新文章",
                 to: "/docs/intro",
-              },
-            ],
-          },
-          {
-            title: "Community",
-            items: [
-              {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
-              },
-              {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/docusaurus",
               },
             ],
           },
@@ -108,7 +92,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} 备案网站进不去`,
       },
       prism: {
         theme: lightCodeTheme,

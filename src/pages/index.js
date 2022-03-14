@@ -9,16 +9,19 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
+    <header className="header-banner">
+      <div className={clsx(styles.headerContainer)}>
+        <div className={clsx(styles.headerLeft)}>
+          <h1>{siteConfig.title} <span>的小破站</span> </h1>
+          <h2>{siteConfig.tagline}</h2>
           <Link
-            className="button button--secondary button--lg"
+            className={clsx(styles.homeLink)}
             to="/docs/intro">
-            去首页
+            快速了解
           </Link>
+        </div>
+        <div className={clsx(styles.headerRight)}>
+          <img src="/img/undraw_static_assets_rpm6.svg" className={styles.imgSvg}></img>
         </div>
       </div>
     </header>

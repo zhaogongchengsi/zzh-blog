@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Blog 首页欢迎页
 
+=======
+
+# 上传测试文件测试 1138
+
 Let's discover **Docusaurus in less than 5 minutes**.
 
 ## Getting Started
@@ -47,9 +51,7 @@ The `npm run start` command builds your website locally and serves it through a 
 Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
 
 ```js live
-function and() {
-  return "1";
+function dom() {
+  return "虚拟代码测试";
 }
-
-and();
 ```
