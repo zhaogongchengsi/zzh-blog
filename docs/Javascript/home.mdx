@@ -29,7 +29,7 @@ sidebar_position: 1
 指定的函数会在最后执行
 
 > 使用:
-```js
+```js {4}
   const input = document.getElementById('input'); // 输入框
   //  防抖函数 1 
   function debounce (fn, delay) {
@@ -67,7 +67,7 @@ sidebar_position: 1
 获取执行期的 ```this``` 和 ``` arguments ``` 在执行的时候通过 ```apply``` 改变执行期的this和实参
 
 > 使用:
-```js
+```js 
   const fn = debounce(function (e) {
     console.log("this", this)
     console.log("args", arguments)
@@ -83,7 +83,7 @@ sidebar_position: 1
 2. 时间间隔
 3. 第一次是否执行
 
-```js live
+```js live  
   (function () {
     // 防抖函数
     function debounce (fn, delay, immediate) {
