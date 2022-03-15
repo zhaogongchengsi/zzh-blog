@@ -1,3 +1,7 @@
+---
+title: Scss 通用mixin 方法
+---
+
 # scss MixIn 专区
 
 ## 文字截断
@@ -22,34 +26,34 @@
 ```scss
 @mixin position($value) {
   position: absolute;
-  @if $value == "left" {
+  @if $value == 'left' {
     left: 0;
     top: 0;
     bottom: 0;
     margin: auto 0;
   }
 
-  @if $value == "right" {
+  @if $value == 'right' {
     right: 0;
     top: 0;
     bottom: 0;
     margin: auto 0;
   }
 
-  @if $value == "top" {
+  @if $value == 'top' {
     right: 0;
     top: 0;
     left: 0;
     margin: 0 auto;
   }
-  @if $value == "bottom" {
+  @if $value == 'bottom' {
     right: 0;
     bottom: 0;
     left: 0;
     margin: 0 auto;
   }
 
-  @if $value == "center" {
+  @if $value == 'center' {
     right: 0;
     bottom: 0;
     left: 0;
@@ -81,7 +85,7 @@
   &::after,
   &::before {
     clear: both;
-    content: "";
+    content: '';
     display: block;
     height: 0;
     line-height: 0;
@@ -151,8 +155,8 @@
   $width: 1200px /* 父元素的宽度 */,
   $chiname: item /* 子元素的类名 */,
   $row: 4 /* 列数 */,
-  $space: 20px,/* 间隔 */ 
-  $isov: false /*父元素是否有裁剪属性*/
+  $space: 20px,
+  /* 间隔 */ $isov: false /*父元素是否有裁剪属性*/
 ) {
   @if ($isov == true) {
     width: $width;

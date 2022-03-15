@@ -1,38 +1,38 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "伍六七",
-  tagline: "学不动了，就去喂猪！！！",
-  url: "https://zzhblog.cn",
-  baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/logo2.png",
+  title: '伍六七',
+  tagline: '学不动了，就去喂猪！！！',
+  url: 'https://zzhblog.cn',
+  baseUrl: '/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/logo2.png',
   // organizationName: "facebook", // Usually your GitHub org/user name.
   // projectName: "docusaurus", // Usually your repo name.
-  themes: ["@docusaurus/theme-live-codeblock"],
+  themes: ['@docusaurus/theme-live-codeblock'],
   presets: [
     [
-      "classic",
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: "https://github.com/zhaogongchengsi/zzh-blog",
+          editUrl: 'https://github.com/zhaogongchengsi/zzh-blog',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: "https://github.com/zhaogongchengsi/zzh-blog",
+          editUrl: 'https://github.com/zhaogongchengsi/zzh-blog',
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -40,54 +40,54 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      metadata: [{ name: "keywords", content: "zzhblog" }],
+      metadata: [{ name: 'keywords', content: 'zzhblog' }],
       navbar: {
-        title: "ZZH-Blog",
+        title: 'ZZH-Blog',
         logo: {
-          alt: "伍六七",
-          src: "img/logo1.png",
+          alt: '伍六七',
+          src: 'img/logo1.png',
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
-            position: "right",
-            label: "文章",
+            type: 'doc',
+            docId: 'intro',
+            position: 'right',
+            label: '文章',
           },
           {
-            to: "/blog",
-            label: "Blog",
-            position: "right",
+            to: '/blog',
+            label: 'Blog',
+            position: 'right',
           },
           {
-            href: "https://github.com/zhaogongchengsi/zzh-blog",
-            label: "GitHub",
-            position: "right",
+            href: 'https://github.com/zhaogongchengsi/zzh-blog',
+            label: 'GitHub',
+            position: 'right',
           },
         ],
       },
       footer: {
-        style: "dark",
+        style: 'dark',
         links: [
           {
-            title: "Docs",
+            title: 'Docs',
             items: [
               {
-                label: "最新文章",
-                to: "/docs/intro",
+                label: '最新文章',
+                to: '/docs/intro',
               },
             ],
           },
           {
-            title: "More",
+            title: 'More',
             items: [
               {
-                label: "Blog",
-                to: "/blog",
+                label: 'Blog',
+                to: '/blog',
               },
               {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                label: 'GitHub',
+                href: 'https://github.com/zhaogongchengsi/zzh-blog',
               },
             ],
           },
@@ -99,6 +99,6 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-};
+}
 
-module.exports = config;
+module.exports = config
