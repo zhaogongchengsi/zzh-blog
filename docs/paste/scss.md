@@ -151,8 +151,8 @@
   $width: 1200px /* 父元素的宽度 */,
   $chiname: item /* 子元素的类名 */,
   $row: 4 /* 列数 */,
-  $space: 20px,
-  /* 间隔 */ $isov: false /*父元素是否有裁剪属性*/
+  $space: 20px,/* 间隔 */ 
+  $isov: false /*父元素是否有裁剪属性*/
 ) {
   @if ($isov == true) {
     width: $width;
