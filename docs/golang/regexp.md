@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Golang 标准库学习 - regexp
+# 标准库学习 - regexp
 
 ## regexp
 

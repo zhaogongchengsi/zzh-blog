@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Golang 标准库学习 - strings
+# 标准库学习 - strings
 
 ## strings
 

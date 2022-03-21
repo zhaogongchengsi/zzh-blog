@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Golang 标准库学习 - ioutil
+# 标准库学习 - ioutil
 
 ## ioutil 
 
