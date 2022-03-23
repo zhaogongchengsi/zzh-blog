@@ -126,3 +126,87 @@ func (p *ProcessState) String() string
 ```
 
 ## 系统信息
+
+1. ***Hostname*** Hostname返回内核提供的主机名。
+
+```go
+func Hostname() (name string, err error)
+```
+
+2. ***Getpagesize*** Getpagesize返回底层的系统内存页的尺寸。
+
+```go
+func Getpagesize() int
+```
+
+3. ***Environ*** Environ返回表示环境变量的格式为"key=value"的字符串的切片拷贝。
+
+```go
+func Environ() []string
+```
+
+4. ***Getenv*** Getenv检索并返回名为key的环境变量的值。如果不存在该环境变量会返回空字符串。
+
+```go
+func Getenv(key string) string
+```
+
+5. ***Setenv*** Setenv设置名为key的环境变量。如果出错会返回该错误。
+
+```go
+func Setenv(key, value string) error
+```
+
+6. ***Clearenv*** Clearenv删除所有环境变量。
+
+```go
+func Clearenv()
+```
+
+7. ***Exit*** Exit让当前程序以给出的状态码code退出。一般来说，状态码0表示成功，非0表示出错。程序会立刻终止，defer的函数不会被执行。
+
+```go
+func Exit(code int)
+```
+
+8. ***Expand*** Expand函数替换s中的${var}或$var为mapping(var)。例如，os.ExpandEnv(s)等价于os.Expand(s, os.Getenv)。
+
+```go
+func Expand(s string, mapping func(string) string) string
+```
+
+9. ***ExpandEnv*** ExpandEnv函数替换s中的${var}或$var为名为var 的环境变量的值。引用未定义环境变量会被替换为空字符串。
+
+```go
+func ExpandEnv(s string) string
+```
+
+10. ***Getuid*** Getuid返回调用者的用户ID。
+
+```go
+func Getuid() int
+```
+
+11. ***Getgid*** Getgid返回调用者的组ID。
+
+```go
+func Getgid() int
+```
+
+12. ***Getgroups*** Getgroups返回调用者所属的所有用户组的组ID。
+
+```go
+func Getgroups() ([]int, error)
+```
+
+13. ***Getpid*** Getpid返回调用者所在进程的进程ID。
+
+```go
+func Getpid() int
+```
+
+14. ***Getppid*** Getppid返回调用者所在进程的父进程的进程ID。
+
+```go
+func Getppid() int
+```
