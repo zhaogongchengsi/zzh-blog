@@ -1,0 +1,70 @@
+# 两数之和
+
+## 题目：两数之和
+
+**来源**: [LeetCode](https://leetcode-cn.com/problems/two-sum)
+
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+
+你可以按任意顺序返回答案。
+
+> 示例
+```
+输入：nums = [2,7,11,15], target = 9
+输出：[0,1]
+解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+```
+
+## 解题
+
+### js
+
+```js live
+(function(params) {
+    /**
+     * @param {number[]} nums
+     * @param {number} target
+     * @return {number[]}
+     */
+
+    const nums = [2, 7, 11, 15]
+    const target = 9
+
+    var twoSum = function(nums, target) {
+        const map = new Map();
+
+        for (var i = 0; i < nums.length; i++) {
+            let diff = target - nums[i] // 计算 差
+            if (map.has(diff)) { // 检查 计算的差是否存在当前map中
+                return [map.get(diff), i]
+            }
+
+            map.set(nums[i], i) // 不存在 就把当前的 值 和 索引 存进去
+        }
+    };
+
+    return twoSum(nums, target)
+})()
+```
+> 解题思路：
+首先创建一个map 用于存储已经遍历过的值 ，然后循环查看当前数值和目标的差是否已经出现过 若已经出现过则就是当前值
+若没出现 则将当前数值 存进map key 为数 value 为 index
+
+### go
+
+```go
+func twoSum(numArr []int, target int) []int {
+    storemap := map[int]int{} // 创建一个map
+    for i, num := range numArr {
+        // 检查差值是否已经出现
+        if j, ok := storemap[target - num]; ok {
+            ans = []int{j, i}
+            break
+        }
+        idxMap[num] = i
+    }
+    return
+}
+```
