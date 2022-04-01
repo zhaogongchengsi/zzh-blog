@@ -88,3 +88,49 @@ function debounce(fn, delay, immediate) {
     return newobj
   }
 ```
+
+## 回到顶部函数
+
+```js
+// 示例
+onTop.addEventListener(
+  'click',
+  function () {
+    window.requestAnimationFrame(scrollToTop)
+  },
+  false
+)
+
+function scrollToTop() {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  if (scrollTop > 0) {
+    window.requestAnimationFrame(scrollToTop)
+    window.scrollTo(0, scrollTop - 200)
+  } else {
+    window.cancelAnimationFrame(scrollToTop)
+  }
+}
+```
+
+## 动态改变根元素字体大小
+
+```js
+var docEl = doc.documentElement
+var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+
+function recalc() {
+  var designWidth = 75 // 100px = 10rem   10px ：1rem
+  var clientWidth = docEl.clientWidth
+  // 当超出限制 比如电脑打开手机的页面 则定死一个宽度
+  if (clientWidth > 750) {
+    clientWidth = 750
+  }
+
+  docEl.style.fontSize = clientWidth / designWidth + 'px'
+}
+
+if (!doc.addEventListener) return
+recalc()
+win.addEventListener(resizeEvt, recalc, false)
+doc.addEventListener('DOMContentLoaded', recalc, false)
+```
