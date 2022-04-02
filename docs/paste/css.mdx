@@ -85,3 +85,13 @@ border-bottom: 50px solid transparent;
     borderBottom: '50px solid transparent',
   }}
 ></div>
+
+## 探测 IE
+
+只在 IE 下生效的 css 样式
+
+```css
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* 需要只在ie下生效的css 样式 */
+}
+```

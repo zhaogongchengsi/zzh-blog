@@ -188,3 +188,13 @@ title: Scss 通用mixin 方法
   }
 }
 ```
+
+## 探测 IE
+
+```scss
+@mixin IsIE {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+```
