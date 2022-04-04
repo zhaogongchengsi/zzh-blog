@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大文件分片上传</title>
+    <link rel="stylesheet" href="./big-file.css">
+  </head>
+  <body>
+    <div class="container">
+      <input class="" type="file" placeholder="请选择文件" id="file-input" />
+      <button type="button" id="upload" name="upload">上传</button>
+    </div>
+    
+    <div class="img-preview"> <h3>预览：</h3><img src="" alt="还未选择图片"> </div>
+
+    <script src="./big-file-upload.js"></script>
+    <script>
+      const ofileInput = document.getElementById('file-input'),
+        oUpload = document.getElementById('upload'),
+        oimg = document.querySelector(".img-preview img")
+        oUpload.addEventListener('click', upload, false);
+
+        let file
+
+        ofileInput.addEventListener("change", function () {
+            file = ofileInput.files[0]
+            var reader  = new FileReader();
+
+            reader.addEventListener("load", function () {
+                oimg.src = reader.result;
+            }, false)
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        })
+
+        function upload (e) {
+            let bigfile = new LargeFileUpload({
+                url:"http://localhost:8080", // 需要上传的路径
+                // size: 128 * 1024,
+                file: file, // 需要上传的文件
+                // numberCopies: 10 // 文件切成的分数
+                whetherShard: true, // 是否切片
+            })
+
+            console.log("实例",bigfile)
+            // 当运行 upload 方法时 开始上传
+            bigfile.upload()
+        }
+    </script>
+  </body>
+</html>

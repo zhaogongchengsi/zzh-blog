@@ -1,0 +1,16 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "zhaozunhong",
+  "license": "ISC",
+  "dependencies": {
+    "fs-extra": "^10.0.1",
+    "multiparty": "^4.2.3"
+  }
+}
