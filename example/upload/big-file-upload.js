@@ -7,9 +7,9 @@ class LargeFileUpload {
         this.file = options.file;
         // 文件大小
         this.fileSize = options.file.size
+        this.fileName = options.file.name
         // 需要上传的文件大小
         this.url = options.url
-        this._xhr = new XMLHttpRequest();
         this._fileList = [];
         this.whetherShard = options.whetherShard || false;
         this.init(options)
@@ -18,11 +18,10 @@ class LargeFileUpload {
 
     // 上传方法 传入一个 fn 用来自定义上传
     async upload (fn) {
-        console.log('uploading...');
-        const formData = new FormData();
-        formData.append('file', this.file);
-        let res = await this.ajax(formData)
-        console.log(res)
+        const qus = await this.createUploadQueue()
+        Promise.all(qus).then(function (res) {
+            console.log(1,res)
+        })
     }
 
     // 初始化
@@ -48,40 +47,72 @@ class LargeFileUpload {
             this._fileList.push({ file: this.file.slice(current, current + size) });
             current += size;
         }
-        return this 
+        return this
     }
 
     // 文件hash
-    hash (file){
+    hash (){
         return new Promise((resolve, reject) => {
-            let reader = new FileReader();
-            reader.onload = function (e) {
-                let hash = CryptoJS.SHA256(e.target.result);
-                resolve(hash.toString(CryptoJS.enc.Hex))
+            const worker = new Worker('hash.js');
+            worker.postMessage({ fileChunkList: this._fileList });
+            worker.onmessage = (e) => {
+                const { hash, percentage } = e.data
+                if (hash) {
+                    resolve(hash)
+                }
             }
-            reader.readAsArrayBuffer(file)
         })
     }
 
     // ajax
-    ajax (data, method = "Post", headers) {
+    ajax ({data, method = "Post", headers,progress=() => {}}) {
         return new Promise((resolve, reject) => {
-            this._xhr.open(method, this.url, true);
-            this._xhr.onreadystatechange = () => {
-                if (this._xhr.readyState === 4) {
-                    if (this._xhr.status === 200) {
-                        resolve(this._xhr.response)
-                    } else {
-                        reject(this._xhr.status)
-                    }
-                }
-            }
+            const xhr = new XMLHttpRequest();
+            xhr.open(method, this.url, true);
+            xhr.addEventListener('progress', progress);
             if (headers) {
                 for (let key in headers) {
-                    this._xhr.setRequestHeader(key, headers[key])
+                    xhr.setRequestHeader(key, headers[key])
                 }
             }
-            this._xhr.send(data)
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    resolve({
+                        status: xhr.status,
+                        response: xhr.response,
+                        isOK: true
+                    })
+                } else {
+                    resolve({
+                        status: xhr.status,
+                        response: xhr.response,
+                        isOK: false
+                    })
+                }
+            }
+            xhr.send(data);
         })
+    }
+
+    async createUploadQueue () {
+        const hash = await this.hash()
+        return this._fileList.map(({file}, index) => {
+            return new Promise((resolve, reject) => {
+                const formData = new FormData();
+                formData.append('file', file)
+                formData.append('size', this.size)
+                formData.append('hash', hash)
+                formData.append('id', index)
+                formData.append('fileName', this.fileName)
+                formData.append('fileSize', this.fileSize)
+                return this.ajax({
+                    data: formData,
+                    method: "Post",
+                    progress: (e) => {
+                        // console.log(e)
+                    }
+                })
+            })
+        }, this)
     }
 }
