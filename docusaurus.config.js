@@ -24,7 +24,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/zhaogongchengsi/zzh-blog',
+          editUrl: 'https://github.com/zhaogongchengsi/zzh-blog/tree/master',
         },
         blog: {
           showReadingTime: true,

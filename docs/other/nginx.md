@@ -80,3 +80,62 @@ kill -QUIT 主进程号
 nginx -c /etc/nginx/nginx.conf
 ```
 
+## 配置https
+
+```conf
+
+server {
+    #服务启动时监听的端口
+    listen 443 ssl; # 新版写法
+    listen [::]:443 ssl;
+    #服务启动时文件加载的路径
+    root /var/www/html/blog;
+    #默认加载的第一个文件wwhm
+    index index.php index.html index.htm index.nginx-debian.html;
+    #页面访问域名，如果没有域名也可以填写
+    server_name zzhblog.cn;
+
+    # 配置ssl 证书
+    # ssl on; 不使用这个写法 会引起警告
+
+    ssl_certificate cert/xxx.crt  ;
+
+    ssl_certificate_key cert/xxx.key;
+
+    ssl_session_timeout 5m;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+
+    ssl_prefer_server_ciphers on;
+
+
+    location / {
+        #页面加载失败后所跳转的页面
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+##### 检查配置文件是否正常
+
+```sh
+nginx -t
+```
+nginx: the configuration file /etc/nginx/nginx.conf syntax is **ok**
+nginx: configuration file /etc/nginx/nginx.conf **test is successful**
+出现类似的就为成功
+
+##### 重启nginx
+
+```sh
+nginx -s reload
+```
+不报错就是成功重启
+
+## http 跳转 https nginx 重定向
+在http 服务 也就是在80端口服务中加入下面这个代码 然后在重启 不报错就是成功
+```conf
+rewrite ^(.*)$ https://${server_name}$1 permanent;
+```
