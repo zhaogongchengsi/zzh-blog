@@ -134,3 +134,34 @@ recalc()
 win.addEventListener(resizeEvt, recalc, false)
 doc.addEventListener('DOMContentLoaded', recalc, false)
 ```
+
+## 浏览器版本检测
+
+```js
+(function () {
+      // 检测ie
+      const userAgent = navigator.userAgent
+      const isIE = /msie\s|trident.*rv:([\w.]+)/i.test(userAgent);
+      // 检测edge
+      const isEdge = /edge\/([\w.]+)/.test(userAgent);
+      // 检测firefox
+      const isFirefox = /firefox\/([\w.]+)/.test(userAgent);
+      // 检测chrome
+      const isChrome = /chrome\/([\w.]+)/.test(userAgent) && !isEdge;
+      // 检测opera
+      const isOpera = /opera\/([\w.]+)/.test(userAgent);
+      // 检测safari
+      const isSafari = /version\/([\w.]+).*safari/.test(userAgent) && !isEdge;
+      // 检测是否为移动端
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+      // 检测是否为移动端
+      const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+
+      if (isIE) {
+        const isUpDate = confirm("当前浏览器版本过低!! 点击确认升级浏览器")
+        if (isUpDate) {
+          window.open('https://www.google.cn/intl/zh-CN/chrome/')
+        }
+      }
+ })()
+```
