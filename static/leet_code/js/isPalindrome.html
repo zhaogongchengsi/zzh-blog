@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回文数</title>
+</head>
+<body>
+    <h1>回文数</h1>
+    <script>
+
+        // 回文数是指将一个正整数从左往右读和从右往左读都是一样的数，例如12321，909。
+        /**
+         * @param {number} x
+         * @return {boolean}
+         */
+        var isPalindrome = function(x) {
+            if (x < 0) {
+                return false
+            }
+            let str = x.toString()
+            let len = str.length
+            for (let i = 0; i < len / 2; i++) {
+                if (str[i] !== str[len - 1 - i]) {
+                    return false
+                }
+            }
+            return true
+        };
+
+        console.log(isPalindrome(12121))
+    </script>
+
+
+</body>
+</html>

@@ -22,7 +22,7 @@ nginx version: nginx/1.18.0 (Ubuntu)
 3. ## 配置使用nginx
 
 ```sh
-vi blog.cong
+vi blog.conf
 ```
 输入以下内容
 

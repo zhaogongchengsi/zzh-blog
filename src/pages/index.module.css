@@ -11,12 +11,33 @@
 }
 
 @media screen and (max-width: 996px) {
+
+  body {
+    min-width: 300px !important;
+  }
+
   .heroBanner {
     padding: 2rem;
   }
 
   .headerBanner {
     background-size: 100% 100% !important;
+  }
+
+  .homeDescBackaged {
+    width: 100% !important;
+  }
+
+  .homelinks {
+    justify-content: space-around !important;
+  }
+
+  .desc {
+    width: 100% !important;
+  }
+
+  .homeLink {
+    margin: 0 !important;
   }
 }
 
@@ -49,6 +70,7 @@
 }
 
 .homelinks {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,7 +92,7 @@
   transition: all 0.2s;
   color: #333;
   font-weight: 600;
-  margin-right: 1rem;
+  margin: 1rem;
 }
 
 .homeLink:hover {
@@ -79,4 +101,9 @@
   background: linear-gradient(145deg, #1bc7ff, #17a7d8);
   box-shadow: 0px 0px 0px 0px #17abdd, -1px 0px 21px #1bc9ff;
   color: #fff;
+}
+
+body {
+  height: auto !important;
+  
 }

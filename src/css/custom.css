@@ -44,6 +44,7 @@
   backdrop-filter: blur( 10px );
   -webkit-backdrop-filter: blur( 10px );
   border-radius: 10px;
+  width: 80%;
 }
 
 [data-theme="dark"] .homeDescBackaged {
