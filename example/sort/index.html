@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排序大法</title>
+</head>
+<body>
+    <script>
+        // 生成 1-100 之间的随机数
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function randomArray(len) {
+            return Array.from({length: len}, () => random(1, 100));
+        }
+    </script>
+    <script>
+        // 冒泡排序 两两对比 顺序相反交换位置
+        const testAttr = randomArray(10);
+
+        // 冒泡排序
+        function sort (arr) {
+            for (var i = 0; i < arr.length; i++) {
+                for (var j = i; j < arr.length; j++) {
+                    // 判断大小 如果前面的数大于后面的数 则交换位置
+                    if (arr[j] < arr[i]) {
+                        // 交换位置
+                        var temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        // 选择排序
+        function selectSort (arr) {
+            for (var i = 0; i < arr.length; i++) {
+                var min = i; // 首先假设第一个数为最小值
+                for (var j = i + 1; j < arr.length; j++) {
+                    // 如果后面的数比前面的数小 则更新最小值
+                    if (arr[j] < arr[min]) {
+                        // 将最小的值更新为后面的数
+                        min = j;
+                    }
+                }
+                // 如果最小值不是第一个数 则交换位置
+                if (min !== i) {
+                    var temp = arr[i];
+                    arr[i] = arr[min];
+                    arr[min] = temp;
+                }
+            }
+            return arr;
+        }
+
+        // 插入排序
+        function insertSort (arr) {
+            for (var i = 1; i < arr.length; i++) {
+                var temp = arr[i];// 假设以排序元素
+                for (var j = i - 1; j >= 0; j--) {
+                    if (arr[j] > temp) {
+                        arr[j + 1] = arr[j];
+                        arr[j] = temp;
+                    } else {
+                        break;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        console.time('test');
+        console.log(insertSort(testAttr));
+        console.timeEnd('test');
+    </script>
+</body>
+</html>
