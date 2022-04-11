@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>排序大法</title>
 </head>
+
 <body>
     <script>
         // 生成 1-100 之间的随机数
@@ -14,15 +16,17 @@
         }
 
         function randomArray(len) {
-            return Array.from({length: len}, () => random(1, 100));
+            return Array.from({
+                length: len
+            }, () => random(1, 100));
         }
     </script>
     <script>
         // 冒泡排序 两两对比 顺序相反交换位置
-        const testAttr = randomArray(10);
+        const testAttr = randomArray(5);
 
         // 冒泡排序
-        function sort (arr) {
+        function sort(arr) {
             for (var i = 0; i < arr.length; i++) {
                 for (var j = i; j < arr.length; j++) {
                     // 判断大小 如果前面的数大于后面的数 则交换位置
@@ -38,7 +42,7 @@
         }
 
         // 选择排序
-        function selectSort (arr) {
+        function selectSort(arr) {
             for (var i = 0; i < arr.length; i++) {
                 var min = i; // 首先假设第一个数为最小值
                 for (var j = i + 1; j < arr.length; j++) {
@@ -59,9 +63,9 @@
         }
 
         // 插入排序
-        function insertSort (arr) {
+        function insertSort(arr) {
             for (var i = 1; i < arr.length; i++) {
-                var temp = arr[i];// 假设以排序元素
+                var temp = arr[i]; // 假设以排序元素
                 for (var j = i - 1; j >= 0; j--) {
                     if (arr[j] > temp) {
                         arr[j + 1] = arr[j];
@@ -74,9 +78,31 @@
             return arr;
         }
 
-        console.time('test');
-        console.log(insertSort(testAttr));
-        console.timeEnd('test');
+        // 希尔排序
+        function shellSort(arr) {
+            // 计算增量因子
+            var gap = Math.floor(arr.length / 2);
+            while (gap > 0) {
+
+                for (var i = gap; i < arr.length; i++) {
+                    var temp = arr[i];
+                    for (var j = i - gap; j >= 0; j -= gap) {
+                        if (arr[j] > temp) {
+                            // 交换位置
+                            arr[j + gap] = arr[j];
+                            arr[j] = temp;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                gap = Math.floor(gap / 2);
+            }
+            return arr;
+        }
+
+        console.log(shellSort(testAttr).join(' > '));
     </script>
 </body>
+
 </html>

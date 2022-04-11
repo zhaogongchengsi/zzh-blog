@@ -4,48 +4,48 @@ sidebar_position: 4
 
 # JavaScript 之 排序大法
 
-
 ## 生成随机数
 
 ```js live
 (function () {
-    // 生成 1-100 之间的随机数
-    function random(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    // 生成 数组
-    function randomArray(len) {
-        return Array.from({length: len}, () => random(1, 100));
-    }
-    const testArr = randomArray(10)
-    window.random = random;
-    window.randomArray = randomArray;
-    window.testArr = testArr
-    return "测试数组：" + testArr.join('-');
+  // 生成 1-100 之间的随机数
+  function random(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }
+  // 生成 数组
+  function randomArray(len) {
+    return Array.from({ length: len }, () => random(1, 100))
+  }
+  const testArr = randomArray(10)
+  window.random = random
+  window.randomArray = randomArray
+  window.testArr = testArr
+  return '测试数组：' + testArr.join('-')
 })()
 ```
 
 ## 冒泡排序
+
 两两对比 个矮的站前面
 
 ```js live
 (function () {
-    function sort (arr) {
-        for (var i = 0; i < arr.length; i++) {
-            for (var j = i; j < arr.length; j++) {
-                // 判断大小 如果前面的数大于后面的数 则交换位置
-                if (arr[j] < arr[i]) {
-                    // 交换位置
-                    var temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
+  function sort(arr) {
+    for (var i = 0; i < arr.length; i++) {
+      for (var j = i; j < arr.length; j++) {
+        // 判断大小 如果前面的数大于后面的数 则交换位置
+        if (arr[j] < arr[i]) {
+          // 交换位置
+          var temp = arr[i]
+          arr[i] = arr[j]
+          arr[j] = temp
         }
-        return arr;
+      }
     }
+    return arr
+  }
 
-    return sort(testArr).join('-');
+  return sort(testArr).join(' < ')
 })()
 ```
 
@@ -53,51 +53,81 @@ sidebar_position: 4
 
 ```js live
 (function () {
-    function selectSort (arr) {
-        for (var i = 0; i < arr.length; i++) {
-            var min = i; // 首先假设第一个数为最小值
-            // 往后找一个 比当前的最小值还小的值
-            for (var j = i + 1; j < arr.length; j++) {
-                // 如果有 
-                if (arr[j] < arr[min]) {
-                    // 让我们恭喜这个b 就是最小值
-                    min = j;
-                }
-            }
-            // 如果最小值不是第一个数 则交换位置
-            if (min !== i) {
-                var temp = arr[i];
-                // 将最小的哥们放到前面来
-                arr[i] = arr[min];
-                // 将当前的哥们 放到原来最小值的位置
-                arr[min] = temp;
-            }
+  function selectSort(arr) {
+    for (var i = 0; i < arr.length; i++) {
+      var min = i // 首先假设第一个数为最小值
+      // 往后找一个 比当前的最小值还小的值
+      for (var j = i + 1; j < arr.length; j++) {
+        // 如果有
+        if (arr[j] < arr[min]) {
+          // 让我们恭喜这个b 就是最小值
+          min = j
         }
-        return arr;
+      }
+      // 如果最小值不是第一个数 则交换位置
+      if (min !== i) {
+        var temp = arr[i]
+        // 将最小的哥们放到前面来
+        arr[i] = arr[min]
+        // 将当前的哥们 放到原来最小值的位置
+        arr[min] = temp
+      }
     }
+    return arr
+  }
 
-    return selectSort(testArr).join('-');
+  return selectSort(testArr).join(' < ')
 })()
 ```
 
 ## 插入排序
 
 ```js live
-(function (){
-    function insertSort (arr) {
-        for (var i = 1; i < arr.length; i++) {
-            var temp = arr[i];// 假设以排序元素
-            for (var j = i - 1; j >= 0; j--) {
-                if (arr[j] > temp) {
-                    arr[j + 1] = arr[j];
-                    arr[j] = temp;
-                } else {
-                    break;
-                }
-            }
+(function () {
+  function insertSort(arr) {
+    for (var i = 1; i < arr.length; i++) {
+      var temp = arr[i] // 假设以排序元素
+      for (var j = i - 1; j >= 0; j--) {
+        if (arr[j] > temp) {
+          arr[j + 1] = arr[j]
+          arr[j] = temp
+        } else {
+          break
         }
-        return arr;
+      }
     }
-    return insertSort(testArr).join('-');
+    return arr
+  }
+  return insertSort(testArr).join(' < ')
 })()
 ```
+
+## 希尔排序
+
+```js live
+(function () {
+  function shellSort(arr) {
+    // 计算增量因子
+    var gap = Math.floor(arr.length / 2)
+    while (gap > 0) {
+      for (var i = gap; i < arr.length; i++) {
+        var temp = arr[i]
+        for (var j = i - gap; j >= 0; j -= gap) {
+          if (arr[j] > temp) {
+            // 交换位置
+            arr[j + gap] = arr[j]
+            arr[j] = temp
+          } else {
+            break
+          }
+        }
+      }
+      gap = Math.floor(gap / 2)
+    }
+    return arr
+  }
+  return shellSort(testArr).join(' < ')
+})()
+```
+
+未完待续...
