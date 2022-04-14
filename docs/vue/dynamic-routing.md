@@ -14,31 +14,58 @@ const menus = [
     path: "/",
     name: "home",
     component: "views/Home.vue",
-    label: "Home",
-    children: [
-      {
-        path: "page",
-        name: "page",
-        component: "views/page/index.vue",
-        label: "Page",
-      },
-    ],
+    label: "Home-1",
+    id: 1,
+    pid: 0,
+  },
+  {
+    path: "page",
+    name: "page",
+    component: "views/page/index.vue",
+    label: "Page-2",
+    pid: 1,
+    id: 2,
   },
   {
     path: "/user",
     name: "user",
     component: "views/User.vue",
-    label: "User",
+    label: "User-3",
     redirect: "/user/list",
-    children: [
-      {
-        path: "list",
-        name: "list",
-        component: "views/user/index.vue",
-        label: "List",
-      },
-    ],
+    id: 3,
+    pid: 0,
   },
+  {
+    path: "list",
+    name: "list",
+    component: "views/user/index.vue",
+    label: "List-4",
+    id: 4,
+    pid: 3,
+  },
+  {
+    path: "detail",
+    name: "detail",
+    component: "views/user/detail.vue",
+    label: "Detail-5",
+    id: 5,
+    pid: 4,
+  },
+  {
+    path: "edit",
+    name: "edit",
+    component: "views/user/edit.vue",
+    label: "Edit-6",
+    id: 6,
+    pid: 5,
+  },
+  {
+    path: "edit2",
+    name: "edit2",
+    label: "Edit-7",
+    id: 7,
+    pid: 5,
+  }
 ]
 
 // 假装在请求
@@ -55,10 +82,12 @@ export async function GetMnues () {
 ## 全局状态管理 pinia
 路由数据一般需要存储起来需要用来生成menu按钮用以路由跳转
 一般会本地存储和store中存储各一份，这里就存一份在store中
+但是使用 ```routerToTree``` 根据 id 和 pid 的描述，形成
+树形数据结构。
 ```js
 import { defineStore } from "pinia"
 import { GetMnues } from "../api"
-
+import { routerToTree } from "../utils/index"
 export const routerStore = defineStore("router", {
   state: () => ({
     menus: [],
@@ -72,12 +101,53 @@ export const routerStore = defineStore("router", {
     async actionsMenus( ) {
       // 发起路由数据请求
       let menus = await GetMnues()
-      this.menus = menus
+      this.menus = routerToTree(menus)
     }
   },
 })
 
 ```
+
+### ```routerToTree``` 实现
+
+```js
+// 排序
+export function sortByRouter(router) {
+  return router.sort((a, b) => {
+    return a.id - b.id
+  })
+}
+
+// 路由数据转变成树形结构
+export function routerToTree(router) {
+  // 筛选出顶级菜单 并且排序
+  let top_menus = sortByRouter(router.filter((item) => {
+    return item.pid === 0
+  }))
+  // 筛选出顶级菜单下的子菜单
+  let children_menus = router.filter(item => {
+    return item.id !== 0
+  })
+  // 将子菜单挂载到顶级菜单下
+  function subscribeToChildren(top_menus, children_menus) {
+    top_menus.forEach(item => {
+      // 每次都要排序一下先
+      let _child = sortByRouter(children_menus.filter((child) => {
+        return child.pid === item.id
+      }))
+
+      if (_child.length > 0) {
+        item.children = _child
+        subscribeToChildren(item.children, children_menus)
+      }
+      
+    })
+  }
+  subscribeToChildren(top_menus, children_menus)
+  return top_menus  
+}
+```
+![树形数据结构效果](/exampleImg/router2.png)
 
 ## 注册vue-router和pinia
 pinia注册使用很简单，稍微麻烦一点的就是路由使用
@@ -266,4 +336,4 @@ const props = defineProps({
 ### 效果图
 效果没有啥问题
 
-![效果图](/exampleImg/router1.png)
+![效果图](/exampleImg/router3.png)
