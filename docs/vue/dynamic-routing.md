@@ -337,3 +337,6 @@ const props = defineProps({
 效果没有啥问题
 
 ![效果图](/exampleImg/router3.png)
+
+
+[完整示例](https://github.com/zhaogongchengsi/zzh-example/tree/master/vue-router-dome)
