@@ -5,12 +5,15 @@ import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import styles from './index.module.css'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
+import BlogBackground from '@site/src/components/bg/index'
+
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
     <header className={styles.headerBanner}>
-      <div className={clsx(styles.desc, 'homeDescBackaged')}>
+      <img src={`${siteConfig.baseUrl}img/tbs.svg`} className={styles.headerBannerImg} alt="tbs" />
+      <div className={clsx(styles.desc)}>
         <h1>
           {siteConfig.title} <span>的小破站</span>{' '}
         </h1>

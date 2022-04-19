@@ -56,7 +56,20 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  background: url(/img/undraw_static_assets_rpm6.svg) no-repeat 90% center / auto 90%;
+  position: relative;
+  /* background: url(/img/tbs.svg) no-repeat 90% center; */
+}
+
+.headerBannerImg {
+  width: 95%;
+  /* max-width: 500px; */
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .desc {
@@ -64,9 +77,10 @@
   height: 90%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   padding: 1rem;
+  z-index: 10;
 }
 
 .homelinks {
