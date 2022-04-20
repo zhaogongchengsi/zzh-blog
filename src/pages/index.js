@@ -12,7 +12,7 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext()
   return (
     <header className={styles.headerBanner}>
-      <img src={`${siteConfig.baseUrl}img/tbs.svg`} className={styles.headerBannerImg} alt="tbs" />
+      <img src={`${siteConfig.baseUrl}img/tbs_animated.svg`} className={styles.headerBannerImg} alt="tbs" />
       <div className={clsx(styles.desc)}>
         <h1>
           {siteConfig.title} <span>的小破站</span>{' '}

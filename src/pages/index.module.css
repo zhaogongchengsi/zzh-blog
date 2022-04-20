@@ -22,6 +22,13 @@
 
   .headerBanner {
     background-size: 100% 100% !important;
+    height: auto !important;
+    flex-direction:column-reverse;
+  }
+
+  .headerBannerImg {
+    position:static !important;
+
   }
 
   .homeDescBackaged {
@@ -34,6 +41,7 @@
 
   .desc {
     width: 100% !important;
+    height: auto !important;
   }
 
   .homeLink {
