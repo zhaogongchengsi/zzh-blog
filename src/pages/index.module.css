@@ -11,7 +11,6 @@
 }
 
 @media screen and (max-width: 996px) {
-
   body {
     min-width: 300px !important;
   }
@@ -23,12 +22,11 @@
   .headerBanner {
     background-size: 100% 100% !important;
     height: auto !important;
-    flex-direction:column-reverse;
+    flex-direction: column-reverse;
   }
 
   .headerBannerImg {
-    position:static !important;
-
+    position: static !important;
   }
 
   .homeDescBackaged {
@@ -123,6 +121,10 @@
   background: linear-gradient(145deg, #1bc7ff, #17a7d8);
   box-shadow: 0px 0px 0px 0px #17abdd, -1px 0px 21px #1bc9ff;
   color: #fff;
+}
+
+.homeDesc {
+  font-size: 30px;
 }
 
 body {
