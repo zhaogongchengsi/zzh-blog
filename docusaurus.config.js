@@ -91,6 +91,15 @@ const config = {
               },
             ],
           },
+          {
+            title: '友链',
+            items: [
+              {
+                label: '树莓派',
+                href: 'http://rundaa.top/blogsIndex',
+              },
+            ],
+          },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} 备案网站进不去`,
       },
